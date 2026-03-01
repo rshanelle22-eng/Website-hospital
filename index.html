@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honey Bee Wellness Hospital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Global Styles ===== */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#fffbee; color:#333; }
+    a { text-decoration:none; }
+    img { max-width:100%; border-radius:10px; }
+
+    /* ===== Header ===== */
+    header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background: linear-gradient(90deg,#f8d26d,#f2a03d); }
+    header h1 { font-size:1.8rem; color:#4b3e2a; margin-left:0.5rem; }
+    nav a { margin-left:1.5rem; font-weight:600; color:#4b3e2a; transition:0.3s; }
+    nav a:hover { color:white; }
+
+    /* ===== Hero ===== */
+    .hero { display:flex; align-items:center; justify-content:center; text-align:center; background: linear-gradient(to right, #f8d26d, #f2a03d); padding:6rem 2rem; color:white; position:relative; overflow:hidden; }
+    .hero h2 { font-size:3rem; margin-bottom:1rem; }
+    .hero p { font-size:1.2rem; margin-bottom:2rem; }
+    .btn { background-color:#4b3e2a; color:#f8d26d; padding:0.8rem 1.5rem; border-radius:50px; font-weight:600; transition:0.3s; }
+    .btn:hover { background-color:#3a3125; }
+
+    /* ===== Section Titles ===== */
+    section { padding:4rem 2rem; }
+    section h2 { text-align:center; font-size:2.5rem; margin-bottom:2rem; color:#f28b1d; position:relative; }
+    section h2::after { content:''; display:block; width:60px; height:4px; background:#f8d26d; margin:10px auto 0; border-radius:2px; }
+
+    /* ===== About Us ===== */
+    .about p { max-width:800px; margin:0 auto 1rem auto; line-height:1.6; color:#4b3e2a; }
+
+    .core-values { display:grid; grid-template-columns:1fr; gap:1rem; max-width:900px; margin:0 auto; }
+    @media(min-width:768px){ .core-values{ grid-template-columns:repeat(2,1fr); } }
+    .value-card { background:#fff8e6; padding:1.5rem; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center; }
+    .value-card h3 { color:#f28b1d; margin-bottom:0.5rem; }
+
+    /* ===== Services ===== */
+    .cards { display:grid; grid-template-columns:1fr; gap:2rem; max-width:1200px; margin:0 auto; }
+    @media(min-width:768px){ .cards{ grid-template-columns:repeat(2,1fr); } }
+    @media(min-width:1024px){ .cards{ grid-template-columns:repeat(3,1fr); } }
+    .card { background:white; padding:1.5rem; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; position:relative; overflow:hidden; }
+    .card:hover { transform: translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+    .card img { height:200px; object-fit:cover; margin-bottom:1rem; border-radius:10px; transition: transform 0.5s; }
+    .card:hover img { transform: scale(1.1); }
+    .card h3 { color:#f28b1d; margin-bottom:0.5rem; }
+    .card p { color:#4b3e2a; font-weight:500; }
+
+    /* ===== Modals ===== */
+    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color: rgba(0,0,0,0.5); }
+    .modal-content { background:#fff8e6; margin:5% auto; padding:2rem; border-radius:15px; width:90%; max-width:600px; position:relative; }
+    .modal-content img { height:250px; object-fit:cover; margin-bottom:1rem; }
+    .close { position:absolute; top:10px; right:15px; font-size:1.5rem; font-weight:bold; cursor:pointer; color:#d88c1a; }
+
+    /* ===== Patient Care Approach ===== */
+    .patient-cards { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; max-width:1000px; margin:0 auto; padding:2rem; }
+    .column { display:flex; flex-direction:column; gap:1.5rem; flex:1; }
+    .patient-card { background: linear-gradient(135deg,#f8d26d,#f2a03d); padding:2rem 1rem; border-radius:20px; color:white; text-align:center; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s; }
+    .patient-card:hover { transform: translateY(-8px) scale(1.05); box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+    .patient-card .icon { font-size:3rem; margin-bottom:1rem; }
+    .patient-card h3 { font-size:1.2rem; font-weight:700; }
+
+    /* ===== Patient Resources ===== */
+    .resources-cards { display:grid; grid-template-columns:1fr; gap:2rem; max-width:1000px; margin:0 auto; padding:2rem; }
+    @media(min-width:768px){ .resources-cards{ grid-template-columns:repeat(2,1fr); } }
+    @media(min-width:1024px){ .resources-cards{ grid-template-columns:repeat(4,1fr); } }
+    .resource-card { background: linear-gradient(135deg,#f8d26d,#f2a03d); border-radius:20px; padding:2rem 1.5rem; color:white; text-align:center; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s; }
+    .resource-card:hover { transform: translateY(-8px) scale(1.03); box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+    .resource-card .icon { font-size:3rem; margin-bottom:1rem; }
+    .resource-card h3 { font-size:1.2rem; font-weight:700; margin-bottom:0.5rem; }
+    .resource-card p { font-weight:500; font-size:0.95rem; line-height:1.4; }
+    #appointment-form input, #appointment-form select, #appointment-form button { width:90%; margin:0.4rem 0; padding:0.6rem 0.8rem; border-radius:8px; border:none; }
+    #appointment-form button { background-color:#4b3e2a; color:#f8d26d; font-weight:600; cursor:pointer; transition:0.3s; }
+    #appointment-form button:hover { background-color:#3a3125; }
+
+    /* ===== FAQ ===== */
+    .faq-container { max-width:900px; margin:0 auto; }
+    .faq-btn { width:100%; background: linear-gradient(90deg,#f8d26d,#f2a03d); border:none; padding:1rem 1.5rem; border-radius:15px; margin-bottom:0.5rem; font-size:1rem; font-weight:600; color:#4b3e2a; cursor:pointer; text-align:left; transition: background 0.3s, transform 0.2s; }
+    .faq-btn:hover { background: linear-gradient(90deg,#f2a03d,#f28b1d); transform:scale(1.02); }
+    .faq-answer { max-height:0; overflow:hidden; background:#fff8e6; border-radius:15px; padding:0 1.5rem; margin-bottom:1rem; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-answer p { padding:1rem 0; color:#4b3e2a; font-weight:500; }
+
+    /* ===== Contact & Footer ===== */
+    .contact { max-width:800px; margin:0 auto; display:grid; gap:1.5rem; }
+    .contact p, .contact a { font-weight:500; }
+    footer { text-align:center; padding:2rem; background:#4b3e2a; color:#fffbee; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center;">
+    <img src="images/logo.png" width="60" alt="Logo">
+    <h1>Honey Bee Wellness Hospital</h1>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#patient">Patient Care</a>
+    <a href="#resources">Resources</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div>
+    <h2>Healing the Whole, Nurturing Every Life</h2>
+    <p>Compassionate care meets innovation and holistic healing.</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p><strong>Our Philosophy – The Hive:</strong> Honey Bee Wellness Hospital operates like a bee colony where every healthcare professional works collaboratively to ensure efficient, coordinated, and compassionate patient care. Each department contributes to healing, prevention, and wellness for individuals of all ages.</p>
+  <p><strong>Mission:</strong> Providing accessible, compassionate, and holistic healthcare through teamwork, innovation, and excellence while promoting total wellness for individuals and families.</p>
+  <p><strong>Vision:</strong> To become a leading wellness-centered hospital recognized for integrated, patient-focused healthcare that nurtures lifelong health and community well-being.</p>
+
+  <div class="core-values">
+    <div class="value-card"><h3>Harmony</h3>Team collaboration for effective healthcare delivery.</div>
+    <div class="value-card"><h3>Integrity</h3>Ethical and honest healthcare practice.</div>
+    <div class="value-card"><h3>Vitality</h3>Promotion of wellness and healthy living.</div>
+    <div class="value-card"><h3>Excellence</h3>Commitment to quality and safe patient care.</div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card" onclick="openModal('modal1')">
+      <img src="images/robotic-surgery.jpg.png" alt="Robotic Surgery">
+      <h3>The Precision Wing</h3>
+      <p>Click for details</p>
+    </div>
+    <div class="card" onclick="openModal('modal2')">
+      <img src="images/geriatric-care.jpg.png" alt="Geriatric Care">
+      <h3>The Golden Years</h3>
+      <p>Click for details</p>
+    </div>
+    <div class="card" onclick="openModal('modal3')">
+      <img src="images/pediatric-care.jpg.png" alt="Pediatric Care">
+      <h3>The Larva Wing</h3>
+      <p>Click for details</p>
+    </div>
+    <div class="card" onclick="openModal('modal4')">
+      <img src="images/psychiatric-care.jpg.png" alt="Psychiatric Care">
+      <h3>The Renewal Center</h3>
+      <p>Click for details</p>
+    </div>
+    <div class="card" onclick="openModal('modal5')">
+      <img src="images/community-care.jpg.png" alt="Community Care">
+      <h3>CareConnect</h3>
+      <p>Click for details</p>
+    </div>
+    <div class="card" onclick="openModal('modal6')">
+      <img src="images/nutrition-pharmacy.jpg.png" alt="Nutrition & Pharmacy">
+      <h3>Nutri-diet & Pharma-Bee Center</h3>
+      <p>Click for details</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modals -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img src="images/robotic-surgery.jpg.png" alt="Robotic Surgery">
+    <h2>The Precision Wing</h2>
+    <p>High-Tech Robotic Surgery with minimal disruption, advanced precision, and faster recovery. Our surgeons use cutting-edge robotic systems to perform complex procedures with utmost accuracy.</p>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <img src="images/geriatric-care.jpg.png" alt="Geriatric Care">
+    <h2>The Golden Years</h2>
+    <p>Integrative Geriatric Care focusing on mobility, longevity, and quality of life. Our team ensures seniors receive personalized support, chronic disease management, and wellness programs tailored to their needs.</p>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <img src="images/pediatric-care.jpg.png" alt="Pediatric Care">
+    <h2>The Larva Wing</h2>
+    <p>Pediatric Wellness care promoting foundational health and lifelong wellness. Our pediatricians and nurses provide growth monitoring, immunizations, and guidance for healthy development.</p>
+  </div>
+</div>
+
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <img src="images/psychiatric-care.jpg.png" alt="Psychiatric Care">
+    <h2>The Renewal Center</h2>
+    <p>Psychiatric & Rehabilitation care treating mental health and addiction holistically. Our experts offer therapy, counseling, and medical management to support mental wellness and recovery.</p>
+  </div>
+</div>
+
+<div id="modal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+    <img src="images/community-care.jpg.png" alt="Community Care">
+    <h2>CareConnect</h2>
+    <p>Mobile clinics providing primary care, screenings, and vaccinations in the community. We bring healthcare access to underserved areas, promoting preventive care and community wellness.</p>
+  </div>
+</div>
+
+<div id="modal6" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal6')">&times;</span>
+    <img src="images/nutrition-pharmacy.jpg.png" alt="Nutrition & Pharmacy">
+    <h2>Nutri-diet & Pharma-Bee Center</h2>
+    <p>Nutrition, dietary, and pharmacy services ensuring empowered and informed patients. Our nutritionists create meal plans, and pharmacists provide guidance on medication safety and proper use.</p>
+  </div>
+</div>
+
+<script>
+function openModal(id){
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id){
+  document.getElementById(id).style.display = "none";
+}
+</script>
+</div>
+
+<!-- Patient Care Approach -->
+<section id="care" style="text-align:center; padding:60px 20px; background:#fff8e6;">
+
+<h2 style="color:#f28b1d;">Patient Care Approach</h2>
+
+<div style="max-width:800px; margin:auto; display:grid; gap:15px;">
+
+<button class="care-btn" onclick="toggleCare('care1')">
+✔ Coordinated Treatment
+</button>
+<div id="care1" class="care-desc">
+All healthcare departments collaborate closely to ensure seamless and well-coordinated treatment plans, reducing delays and improving patient recovery outcomes.
+</div>
+
+<button class="care-btn" onclick="toggleCare('care2')">
+✔ Safe Medication Management
+</button>
+<div id="care2" class="care-desc">
+Medication safety is ensured through strict verification processes including correct patient identification, dosage checking, and monitoring for adverse reactions.
+</div>
+
+<button class="care-btn" onclick="toggleCare('care3')">
+✔ Continuous Monitoring
+</button>
+<div id="care3" class="care-desc">
+Patients are continuously monitored through regular vital sign assessment, progress evaluation, and early detection of complications.
+</div>
+
+<button class="care-btn" onclick="toggleCare('care4')">
+✔ Patient & Family Education
+</button>
+<div id="care4" class="care-desc">
+Healthcare providers educate patients and families about treatment plans, medications, home care management, and preventive health practices.
+</div>
+
+</div>
+</section>
+<style>
+.care-btn{
+width:100%;
+padding:15px;
+border:none;
+background:linear-gradient(90deg,#f8d26d,#f2a03d);
+color:white;
+font-size:16px;
+font-weight:600;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.care-btn:hover{
+background:linear-gradient(90deg,#f2a03d,#f28b1d);
+}
+
+.care-desc{
+display:none;
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin-bottom:10px;
+}
+</style>
+<script>
+function toggleCare(id){
+var desc = document.getElementById(id);
+
+if(desc.style.display === "block"){
+desc.style.display = "none";
+}else{
+desc.style.display = "block";
+}
+}
+</script>
+
+</section>
+<!-- Patient Resources -->
+<section id="resources">
+  <h2>Patient Resources</h2>
+
+  <div class="resources-cards">
+
+    <div class="resource-card">
+      <div class="icon">📅</div>
+      <h3>Appointment Booking</h3>
+      <form id="appointment-form">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <select required>
+          <option>Select Department</option>
+          <option>Pediatrics</option>
+          <option>Surgery</option>
+          <option>Geriatrics</option>
+          <option>Psychiatry</option>
+          <option>Nutrition & Pharmacy</option>
+        </select>
+        <input type="date" required>
+        <button type="submit">Book Appointment</button>
+      </form>
+    </div>
+
+    <div class="resource-card">
+      <div class="icon">⏰</div>
+      <h3>Visiting Hours</h3>
+      <p>
+        Monday–Friday: 8:00 AM – 8:00 PM<br>
+        Saturday–Sunday: 9:00 AM – 6:00 PM<br><br>
+        ✔ Maximum 2 visitors<br>
+        ✔ Follow hygiene protocols<br>
+        ✔ Children must be supervised
+      </p>
+    </div>
+
+    <div class="resource-card">
+      <div class="icon">💳</div>
+      <h3>Insurance & Payment</h3>
+      <p>
+        ✔ Major insurance accepted<br>
+        ✔ Cash & Card Payments<br>
+        ✔ Flexible payment plans<br>
+        ✔ Billing assistance available
+      </p>
+    </div>
+
+    <div class="resource-card">
+      <div class="icon">📄</div>
+      <h3>Patient Rights</h3>
+      <p>
+        ✔ Privacy & confidentiality<br>
+        ✔ Informed consent<br>
+        ✔ Respectful treatment<br>
+        ✔ Safe healthcare environment
+      </p>
+    </div>
+
+  </div> <!-- end of resources-cards -->
+</section> <!-- end of Patient Resources -->
+
+<!-- Healthcare Team Section -->
+<section id="team" style="padding:60px 20px; background:#fffbee;">
+  <h2 style="color:#f28b1d; text-align:center; margin-bottom:40px;">Our Healthcare Team</h2>
+
+  <div class="team-container" style="max-width:900px; margin:auto; display:flex; flex-direction:column; gap:50px;">
+
+    <!-- ROBOTIC SURGERY -->
+    <h3 style="color:#f28b1d;">🤖 Precision Wing – Robotic Surgery</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <!-- Doctor -->
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/surgeon.jpg.png" alt="Dr. Rose Jewel Razon" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Dr. Rose Jewel Razon</h4>
+        <p>Robotic Surgeon</p>
+        <button onclick="toggleInfo('info1')">View Details</button>
+        <div id="info1" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Performs minimally invasive robotic-assisted surgical procedures ensuring precision and faster recovery.
+        </div>
+      </div>
+      <!-- Nurse -->
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/or-nurse.jpg.png" alt="Nurse Maria Kassandra Pineda" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Nurse Maria Kassandra Pineda</h4>
+        <p>Operating Room Nurse</p>
+        <button onclick="toggleInfo('info2')">View Details</button>
+        <div id="info2" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Assists surgeons, prepares sterile equipment, and ensures patient safety during surgery.
+        </div>
+      </div>
+    </div>
+
+    <!-- PEDIATRICS -->
+    <h3 style="color:#f28b1d;">🧸 Larva Wing – Pediatrics</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/pedia-doctor.jpg.png" alt="Dr. Shanelle Reyes" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Dr. Shanelle Reyes</h4>
+        <p>Pediatrician</p>
+        <button onclick="toggleInfo('info3')">View Details</button>
+        <div id="info3" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Provides child health monitoring, vaccination, and developmental assessment.
+        </div>
+      </div>
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/pedia-nurse.jpg.png" alt="Nurse Aimee Joy Rigor" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Nurse Aimee Joy Rigor</h4>
+        <p>Pediatric Nurse</p>
+        <button onclick="toggleInfo('info4')">View Details</button>
+        <div id="info4" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Delivers compassionate nursing care and family education for children.
+        </div>
+      </div>
+    </div>
+
+    <!-- PSYCHIATRY -->
+    <h3 style="color:#f28b1d;">🧠 Renewal Center – Psychiatry</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/psychiatrist.jpg.png" alt="Dr. Elayza Joan Valdez" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Dr. Elayza Joan Valdez</h4>
+        <p>Psychiatrist</p>
+        <button onclick="toggleInfo('info5')">View Details</button>
+        <div id="info5" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Manages mental health disorders through therapy and medical treatment.
+        </div>
+      </div>
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/psych-nurse.jpg.png" alt="Nurse Marie Grace Basilio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Nurse Marie Grace Basilio</h4>
+        <p>Psychiatric Nurse</p>
+        <button onclick="toggleInfo('info6')">View Details</button>
+        <div id="info6" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Supports emotional stability, counseling, and rehabilitation care.
+        </div>
+      </div>
+    </div>
+
+    <!-- GERIATRIC -->
+    <h3 style="color:#f28b1d;">👴 Golden Years – Geriatric Care</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/geria-doctor.jpg.png" alt="Dr. Portia Mae Untalan" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Dr. Portia Mae Untalan</h4>
+        <p>Geriatrician</p>
+        <button onclick="toggleInfo('info7')">View Details</button>
+        <div id="info7" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Focuses on elderly mobility, chronic illness management, and healthy aging.
+        </div>
+      </div>
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/geria-nurse.jpg.png" alt="Nurse Dave Justine Antonio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Nurse Dave Justine Antonio</h4>
+        <p>Geriatric Nurse</p>
+        <button onclick="toggleInfo('info8')">View Details</button>
+        <div id="info8" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Provides long-term supportive care and monitoring for senior patients.
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMUNITY HEALTH -->
+    <h3 style="color:#f28b1d;">🏥 CareConnect – Community Health</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/community-doctor.jpg.png" alt="Dr. VJ Brosnan De Guzman" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Dr. VJ Brosnan De Guzman</h4>
+        <p>Community Physician</p>
+        <button onclick="toggleInfo('info9')">View Details</button>
+        <div id="info9" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Provides outreach services, vaccination, and preventive health programs.
+        </div>
+      </div>
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/community-nurse.jpg.png" alt="Nurse Jamaica Balitcha" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Nurse Jamaica Balitcha</h4>
+        <p>Community Nurse</p>
+        <button onclick="toggleInfo('info10')">View Details</button>
+        <div id="info10" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Conducts health education, screenings, and home health visits.
+        </div>
+      </div>
+    </div>
+
+    <!-- NUTRITION & PHARMACY -->
+    <h3 style="color:#f28b1d;">💊 Nutri-Diet & Pharma-Bee Center</h3>
+    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/pharmacist.jpg.png" alt="Ms. Kim Panal" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Ms. Kim Panal</h4>
+        <p>Pharmacist</p>
+        <button onclick="toggleInfo('info11')">View Details</button>
+        <div id="info11" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Ensures safe medication dispensing and patient drug education.
+        </div>
+      </div>
+      <div class="team-card" style="flex:1 1 200px;">
+        <img src="images/nutritionist.jpg.png" alt="Mr. Paul Joshua Abilla" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+        <h4>Mr. Paul Joshua Abilla</h4>
+        <p>Nutritionist-Dietitian</p>
+        <button onclick="toggleInfo('info12')">View Details</button>
+        <div id="info12" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
+          Creates individualized nutrition plans supporting treatment recovery.
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- end team-container -->
+</section>
+
+<script>
+function toggleInfo(id){
+  const info = document.getElementById(id);
+  info.style.display = info.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+<!-- FAQ Section -->
+<section id="faq" style="padding:60px 20px; background:#fff8e6;">
+  <h2 style="color:#f28b1d; text-align:center; margin-bottom:40px;">Frequently Asked Questions</h2>
+
+  <div class="faq-container" style="max-width:900px; margin:auto; display:flex; flex-direction:column; gap:15px;">
+
+    <button class="faq-btn">1. What services does Honeybee Wellness Center offer?</button>
+    <div class="faq-answer"><p>We provide holistic consultations, nutrition counseling, stress management, mindfulness programs, massage therapy, and wellness workshops.</p></div>
+
+    <button class="faq-btn">2. How can I book an appointment?</button>
+    <div class="faq-answer"><p>You may book online, call reception, or visit the hospital personally.</p></div>
+
+    <button class="faq-btn">3. Do I need a referral?</button>
+    <div class="faq-answer"><p>No referral is required. You may directly schedule a consultation.</p></div>
+
+    <button class="faq-btn">4. What should I bring?</button>
+    <div class="faq-answer"><p>Bring medical history, medication list, and comfortable clothing if needed.</p></div>
+
+    <button class="faq-btn">5. Do you accept insurance?</button>
+    <div class="faq-answer"><p>Yes. Selected insurance providers are accepted. Please verify coverage.</p></div>
+
+    <button class="faq-btn">6. What are operating hours?</button>
+    <div class="faq-answer"><p>Monday–Friday: 8AM–7PM | Saturday: 9AM–3PM.</p></div>
+
+  </div>
+</section>
+
+<script>
+// FAQ toggle
+const faqButtons = document.querySelectorAll(".faq-btn");
+
+faqButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    if(answer.style.maxHeight){
+      answer.style.maxHeight = null;
+      answer.style.padding = "0 20px";
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      answer.style.padding = "15px 20px";
+    }
+  });
+});
+</script>
+
+<!-- Contact Section -->
+<section id="contact" style="padding:60px 20px; background:#fffbee;">
+  <h2 style="color:#f28b1d; text-align:center; margin-bottom:40px;">Contact Us</h2>
+
+  <div class="contact" style="max-width:700px; margin:auto; display:flex; flex-direction:column; gap:20px;">
+    <div style="background:white; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); font-weight:500; color:#4b3e2a;">
+      <strong>Address:</strong> Tarlac City, Philippines
+    </div>
+    <div style="background:white; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); font-weight:500; color:#4b3e2a;">
+      <strong>Phone:</strong> +63 912 345 678
+    </div>
+    <div style="background:white; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); font-weight:500; color:#4b3e2a;">
+      <strong>Email:</strong> info@honeybeewellnesshospital.ph
+    </div>
+    <div style="background:white; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); font-weight:500; color:#4b3e2a;">
+      <strong>Open:</strong> 24 Hours Emergency Services
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>🐝 Honey Bee Wellness Hospital © 2026</p>
+  <p>Healing Together. Growing Healthier Communities.</p>
+</footer>
