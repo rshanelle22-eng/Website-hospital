@@ -165,7 +165,15 @@
       <h3>Nutri-diet & Pharma-Bee Center</h3>
       <p>Click for details</p>
     </div>
-  </div>
+<div class="card" onclick="openModal('modal7')">
+
+  <img src="images\diagnostic-laboratory.jpg.png"
+       alt="Diagnostic Laboratory">
+
+  <h3>Diagnostic & Laboratory Hive</h3>
+  <p>Click for details</p>
+
+</div>
 </section>
 
 <!-- Modals -->
@@ -217,9 +225,35 @@
 <div id="modal6" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal6')">&times;</span>
-    <img src="images/nutrition-pharmacy.jpg.png" alt="Nutrition & Pharmacy">
+
+    <img src="images/nutrition-pharmacy.jpg.png">
+
     <h2>Nutri-diet & Pharma-Bee Center</h2>
-    <p>Nutrition, dietary, and pharmacy services ensuring empowered and informed patients. Our nutritionists create meal plans, and pharmacists provide guidance on medication safety and proper use.</p>
+
+    <p>
+      Nutrition, dietary, and pharmacy services ensuring empowered and informed patients.
+    </p>
+
+  </div>
+</div>
+<div id="modal7" class="modal">
+  <div class="modal-content">
+    
+    <span class="close" onclick="closeModal('modal7')">&times;</span>
+
+    <img src="images\diagnostic-laboratory.jpg.png"
+         style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+    <h2>Diagnostic & Laboratory Hive</h2>
+
+    <p>
+      The Diagnostic & Laboratory Hive of Honey Bee Wellness Hospital provides 
+      accurate, timely, and reliable medical testing to support proper diagnosis 
+      and effective treatment planning. Equipped with modern diagnostic technology 
+      and operated by skilled healthcare professionals, the department ensures 
+      precise results while maintaining patient safety and comfort.
+    </p>
+
   </div>
 </div>
 
@@ -377,157 +411,153 @@ desc.style.display = "block";
 <section id="team" style="padding:60px 20px; background:#fffbee;">
   <h2 style="color:#f28b1d; text-align:center; margin-bottom:40px;">Our Healthcare Team</h2>
 
-  <div class="team-container" style="max-width:900px; margin:auto; display:flex; flex-direction:column; gap:50px;">
+  <div class="team-container" style="max-width:1000px; margin:auto; display:flex; flex-wrap:wrap; gap:30px; justify-content:center;">
 
-    <!-- ROBOTIC SURGERY -->
-    <h3 style="color:#f28b1d;">🤖 Precision Wing – Robotic Surgery</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <!-- Doctor -->
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/surgeon.jpg.png" alt="Dr. Rose Jewel Razon" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Dr. Rose Jewel Razon</h4>
-        <p>Robotic Surgeon</p>
-        <button onclick="toggleInfo('info1')">View Details</button>
-        <div id="info1" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Performs minimally invasive robotic-assisted surgical procedures ensuring precision and faster recovery.
-        </div>
-      </div>
-      <!-- Nurse -->
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/or-nurse.jpg.png" alt="Nurse Maria Kassandra Pineda" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Nurse Maria Kassandra Pineda</h4>
-        <p>Operating Room Nurse</p>
-        <button onclick="toggleInfo('info2')">View Details</button>
-        <div id="info2" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Assists surgeons, prepares sterile equipment, and ensures patient safety during surgery.
-        </div>
-      </div>
+    <!-- Doctor Example: Robotic Surgery -->
+    <div class="team-card" onclick="openModal('modal1')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/surgeon.jpg.png" alt="Dr. Rose Jewel Razon" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Dr. Rose Jewel Razon</h4>
+      <p>Robotic Surgeon</p>
     </div>
 
-    <!-- PEDIATRICS -->
-    <h3 style="color:#f28b1d;">🧸 Larva Wing – Pediatrics</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/pedia-doctor.jpg.png" alt="Dr. Shanelle Reyes" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Dr. Shanelle Reyes</h4>
-        <p>Pediatrician</p>
-        <button onclick="toggleInfo('info3')">View Details</button>
-        <div id="info3" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Provides child health monitoring, vaccination, and developmental assessment.
-        </div>
-      </div>
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/pedia-nurse.jpg.png" alt="Nurse Aimee Joy Rigor" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Nurse Aimee Joy Rigor</h4>
-        <p>Pediatric Nurse</p>
-        <button onclick="toggleInfo('info4')">View Details</button>
-        <div id="info4" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Delivers compassionate nursing care and family education for children.
-        </div>
-      </div>
+    <!-- Nurse Example: Robotic Surgery -->
+    <div class="team-card" onclick="openModal('modal2')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/or-nurse.jpg.png" alt="Nurse Maria Kassandra Pineda" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Nurse Maria Kassandra Pineda</h4>
+      <p>Operating Room Nurse</p>
     </div>
 
-    <!-- PSYCHIATRY -->
-    <h3 style="color:#f28b1d;">🧠 Renewal Center – Psychiatry</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/psychiatrist.jpg.png" alt="Dr. Elayza Joan Valdez" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Dr. Elayza Joan Valdez</h4>
-        <p>Psychiatrist</p>
-        <button onclick="toggleInfo('info5')">View Details</button>
-        <div id="info5" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Manages mental health disorders through therapy and medical treatment.
-        </div>
-      </div>
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/psych-nurse.jpg.png" alt="Nurse Marie Grace Basilio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Nurse Marie Grace Basilio</h4>
-        <p>Psychiatric Nurse</p>
-        <button onclick="toggleInfo('info6')">View Details</button>
-        <div id="info6" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Supports emotional stability, counseling, and rehabilitation care.
-        </div>
-      </div>
+    <!-- Pediatrician -->
+    <div class="team-card" onclick="openModal('modal3')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/pedia-doctor.jpg.png" alt="Dr. Shanelle Reyes" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Dr. Shanelle Reyes</h4>
+      <p>Pediatrician</p>
     </div>
 
-    <!-- GERIATRIC -->
-    <h3 style="color:#f28b1d;">👴 Golden Years – Geriatric Care</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/geria-doctor.jpg.png" alt="Dr. Portia Mae Untalan" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Dr. Portia Mae Untalan</h4>
-        <p>Geriatrician</p>
-        <button onclick="toggleInfo('info7')">View Details</button>
-        <div id="info7" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Focuses on elderly mobility, chronic illness management, and healthy aging.
-        </div>
-      </div>
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/geria-nurse.jpg.png" alt="Nurse Dave Justine Antonio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Nurse Dave Justine Antonio</h4>
-        <p>Geriatric Nurse</p>
-        <button onclick="toggleInfo('info8')">View Details</button>
-        <div id="info8" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Provides long-term supportive care and monitoring for senior patients.
-        </div>
-      </div>
+    <!-- Pediatric Nurse -->
+    <div class="team-card" onclick="openModal('modal4')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/pedia-nurse.jpg.png" alt="Nurse Aimee Joy Rigor" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Nurse Aimee Joy Rigor</h4>
+      <p>Pediatric Nurse</p>
     </div>
 
-    <!-- COMMUNITY HEALTH -->
-    <h3 style="color:#f28b1d;">🏥 CareConnect – Community Health</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/community-doctor.jpg.png" alt="Dr. VJ Brosnan De Guzman" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Dr. VJ Brosnan De Guzman</h4>
-        <p>Community Physician</p>
-        <button onclick="toggleInfo('info9')">View Details</button>
-        <div id="info9" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Provides outreach services, vaccination, and preventive health programs.
-        </div>
-      </div>
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/community-nurse.jpg.png" alt="Nurse Jamaica Balitcha" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Nurse Jamaica Balitcha</h4>
-        <p>Community Nurse</p>
-        <button onclick="toggleInfo('info10')">View Details</button>
-        <div id="info10" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Conducts health education, screenings, and home health visits.
-        </div>
-      </div>
+    <!-- Psychiatrist -->
+    <div class="team-card" onclick="openModal('modal5')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/psychiatrist.jpg.png" alt="Dr. Elayza Joan Valdez" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Dr. Elayza Joan Valdez</h4>
+      <p>Psychiatrist</p>
     </div>
 
-    <!-- NUTRITION & PHARMACY -->
-    <h3 style="color:#f28b1d;">💊 Nutri-Diet & Pharma-Bee Center</h3>
-    <div class="department" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/pharmacist.jpg.png" alt="Ms. Kim Panal" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Ms. Kim Panal</h4>
-        <p>Pharmacist</p>
-        <button onclick="toggleInfo('info11')">View Details</button>
-        <div id="info11" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Ensures safe medication dispensing and patient drug education.
-        </div>
-      </div>
-      <div class="team-card" style="flex:1 1 200px;">
-        <img src="images/nutritionist.jpg.png" alt="Mr. Paul Joshua Abilla" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
-        <h4>Mr. Paul Joshua Abilla</h4>
-        <p>Nutritionist-Dietitian</p>
-        <button onclick="toggleInfo('info12')">View Details</button>
-        <div id="info12" style="display:none; margin-top:10px; padding:10px; background:#fff3cd; border-radius:10px;">
-          Creates individualized nutrition plans supporting treatment recovery.
-        </div>
-      </div>
+    <!-- Psychiatric Nurse -->
+    <div class="team-card" onclick="openModal('modal6')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/psych-nurse.jpg.png" alt="Nurse Marie Grace Basilio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Nurse Marie Grace Basilio</h4>
+      <p>Psychiatric Nurse</p>
+    </div>
+
+    <!-- Geriatric Doctor -->
+    <div class="team-card" onclick="openModal('modal7')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/geria-doctor.jpg.png" alt="Dr. Portia Mae Untalan" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Dr. Portia Mae Untalan</h4>
+      <p>Geriatrician</p>
+    </div>
+
+    <!-- Geriatric Nurse -->
+    <div class="team-card" onclick="openModal('modal8')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/geria-nurse.jpg.png" alt="Nurse Dave Justine Antonio" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Nurse Dave Justine Antonio</h4>
+      <p>Geriatric Nurse</p>
+    </div>
+
+    <!-- Community Doctor -->
+    <div class="team-card" onclick="openModal('modal9')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/community-doctor.jpg.png" alt="Dr. VJ Brosnan De Guzman" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Dr. VJ Brosnan De Guzman</h4>
+      <p>Community Physician</p>
+    </div>
+
+    <!-- Community Nurse -->
+    <div class="team-card" onclick="openModal('modal10')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/community-nurse.jpg.png" alt="Nurse Jamaica Balitcha" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Nurse Jamaica Balitcha</h4>
+      <p>Community Nurse</p>
+    </div>
+
+    <!-- Pharmacist -->
+    <div class="team-card" onclick="openModal('modal11')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/pharmacist.jpg.png" alt="Ms. Kim Panal" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Ms. Kim Panal</h4>
+      <p>Pharmacist</p>
+    </div>
+
+    <!-- Nutritionist -->
+    <div class="team-card" onclick="openModal('modal12')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/nutritionist.jpg.png" alt="Mr. Paul Joshua Abilla" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid #f2a03d;">
+      <h4>Mr. Paul Joshua Abilla</h4>
+      <p>Nutritionist-Dietitian</p>
+    </div>
+
+    <!-- Medical Technologists -->
+    <div class="team-card" onclick="openModal('modal13')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/medtech1.jpg.png.jpeg" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #f2a03d;">
+      <h4>Kian Sergie Ronquillo, RMT</h4>
+      <p>Medical Technologist</p>
+    </div>
+    <div class="team-card" onclick="openModal('modal14')" style="cursor:pointer; text-align:center; flex:1 1 250px;">
+      <img src="images/medtech2.jpg.jpeg" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #f2a03d;">
+      <h4>Lyra Miclat, RMT</h4>
+      <p>Medical Technologist</p>
     </div>
 
   </div> <!-- end team-container -->
 </section>
 
+<!-- Modals -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <img src="images/surgeon.jpg.png" style="width:100%; border-radius:10px;">
+    <h3>Dr. Rose Jewel Razon</h3>
+    <p>Performs minimally invasive robotic-assisted surgical procedures ensuring precision and faster recovery.</p>
+  </div>
+</div>
+<!-- Repeat similar modals for modal2 → modal14 with each team member -->
+<!-- DIAGNOSTIC & LABORATORY -->
+<h3 style="color:#f28b1d;"></h3>
+
+<div class="department-group">
+<!-- MedTech 1 Modal -->
+<div id="medtech1" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:20px; border-radius:10px; max-width:400px; margin:auto; position:relative;">
+    <span style="position:absolute; top:10px; right:15px; cursor:pointer;" onclick="closeModal('medtech1')">&times;</span>
+    <img src="images/medtech1.jpg.png.jpeg" style="width:100%; border-radius:10px; margin-bottom:15px;">
+    <h3>Kian Sergie Ronquillo, RMT</h3>
+    <p>Performs laboratory diagnostics, analyzes patient samples, and ensures accurate results.</p>
+  </div>
+</div>
+
+<!-- MedTech 2 Modal -->
+<div id="medtech2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:20px; border-radius:10px; max-width:400px; margin:auto; position:relative;">
+    <span style="position:absolute; top:10px; right:15px; cursor:pointer;" onclick="closeModal('medtech2')">&times;</span>
+    <img src="images/medtech2.jpg.jpeg" style="width:100%; border-radius:10px; margin-bottom:15px;">
+    <h3>Lyra Miclat, RMT</h3>
+    <p>Specializes in clinical laboratory testing and ensures timely and precise diagnostic results.</p>
+  </div>
+</div>
+  </div> <!-- end team-container -->
+</section>
 <script>
-function toggleInfo(id){
-  const info = document.getElementById(id);
-  info.style.display = info.style.display === 'block' ? 'none' : 'block';
+function openModal(id){
+  document.getElementById(id).style.display="flex";
+}
+function closeModal(id){
+  document.getElementById(id).style.display="none";
 }
 </script>
+
 <!-- FAQ Section -->
 <section id="faq" style="padding:60px 20px; background:#fff8e6;">
   <h2 style="color:#f28b1d; text-align:center; margin-bottom:40px;">Frequently Asked Questions</h2>
